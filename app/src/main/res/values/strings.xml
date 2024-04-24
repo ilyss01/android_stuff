@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="question_text">Мурманск это самый северный город России</string>
+    <string name="true_button">Правда</string>
+    <string name="false_button">Ложь</string>
+    <string name="correct_toast">Верно</string>
+    <string name="incorrect_toast">Не верно</string>
+    <string name="next_button">Далее</string>
+    <string name="prev_button">Назад</string>
+    <string name="question_1">Тихий Океан больше Атлантического</string>
+    <string name="question_2">Ель синего цвета</string>
+    <string name="question_3">Сдание на проспекте Ленина д.57 красного цвета</string>
+    <string name="question_4">Телефон Apple лучше Anroid</string>
+    <string name="question_5">Тяжело в учнии, легко в бою</string>
+</resources>
