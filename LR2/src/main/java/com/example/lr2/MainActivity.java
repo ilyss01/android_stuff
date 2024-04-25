@@ -13,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity {
     Double firstNumber = 0.0;
     Double secondNumber = 0.0;
+    char lastAction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,17 +118,22 @@ public class MainActivity extends AppCompatActivity {
         });
 
         plus.setOnClickListener(v -> {
+            lastAction = '+';
             // FIXME: 12 + 12 + 12 doesn't work
-            if (firstNumber != 0.0 && secondNumber != 0.0) {
-                secondNumber = Double.parseDouble(displayedText.toString());
+            if ((firstNumber != 0.0) && (secondNumber != 0.0)) {
                 firstNumber += secondNumber;
+                firstNumber += Double.parseDouble(displayedText.toString());
                 secondNumber = 0.0;
-                screen.setText(firstNumber.toString());
+                displayedText.setLength(0);
+                displayedText.append(firstNumber);
+                screen.setText(displayedText.toString());
             } else {
                 if (firstNumber == 0.0) {
                     firstNumber = Double.parseDouble(displayedText.toString());
+                    displayedText.setLength(0);
                 } else if (secondNumber == 0.0) {
                     secondNumber = Double.parseDouble(displayedText.toString());
+                    displayedText.setLength(0);
                 }
                 screen.setText(displayedText.toString());
             }
@@ -135,8 +141,25 @@ public class MainActivity extends AppCompatActivity {
 
         eq.setOnClickListener(v -> {
             secondNumber = Double.parseDouble(displayedText.toString());
-            firstNumber += secondNumber;
-            screen.setText(firstNumber.toString());
+            if (lastAction == '+') {
+                firstNumber += secondNumber;
+            } else if (lastAction == '-') {
+                firstNumber -= secondNumber;
+            }
+            displayedText.setLength(0);
+            displayedText.append(firstNumber);
+            screen.setText(displayedText.toString());
+        });
+
+        minus.setOnClickListener(v -> {
+            lastAction = '-';
+            if (firstNumber == 0.0) {
+                firstNumber = Double.parseDouble(displayedText.toString());
+            } else if (secondNumber == 0.0) {
+                secondNumber = Double.parseDouble(displayedText.toString());
+            }
+            displayedText.setLength(0);
+            screen.setText(displayedText.toString());
         });
 
 
