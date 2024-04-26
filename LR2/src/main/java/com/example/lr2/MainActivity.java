@@ -145,6 +145,10 @@ public class MainActivity extends AppCompatActivity {
                 firstNumber += secondNumber;
             } else if (lastAction == '-') {
                 firstNumber -= secondNumber;
+            } else if (lastAction == '*') {
+                firstNumber *= secondNumber;
+            } else if (lastAction == '/') {
+                firstNumber /= secondNumber;
             }
             displayedText.setLength(0);
             displayedText.append(firstNumber);
@@ -162,6 +166,27 @@ public class MainActivity extends AppCompatActivity {
             screen.setText(displayedText.toString());
         });
 
+        multi.setOnClickListener(v -> {
+            lastAction = '*';
+            if (firstNumber == 0.0) {
+                firstNumber = Double.parseDouble(displayedText.toString());
+            } else if (secondNumber == 0.0) {
+                secondNumber = Double.parseDouble(displayedText.toString());
+            }
+            displayedText.setLength(0);
+            screen.setText(displayedText.toString());
+        });
+
+        div.setOnClickListener(v -> {
+            lastAction = '/';
+            if (firstNumber == 0.0) {
+                firstNumber = Double.parseDouble(displayedText.toString());
+            } else if (secondNumber == 0.0) {
+                secondNumber = Double.parseDouble(displayedText.toString());
+            }
+            displayedText.setLength(0);
+            screen.setText(displayedText.toString());
+        });
 
     }
 }
